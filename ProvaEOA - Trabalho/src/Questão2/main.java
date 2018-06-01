@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Questão1;
+package Questão2;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import provaeoa.trabalho.Registro;
 
 /**
@@ -20,33 +20,22 @@ public class main {
         //String Busc = JOptionPane.showInputDialog(null, "CEP", "Insira o CEP",0);
         ArrayList<Registro> Registros = new ArrayList<Registro>();
         try{
-            RandomAccessFile arq1 = new RandomAccessFile("arq1.dat","rw");
-            RandomAccessFile arq2 = new RandomAccessFile("arq2.dat","rw");
+            RandomAccessFile arq1 = new RandomAccessFile("arq1Desordenado.dat","rw");
+            RandomAccessFile arq2 = new RandomAccessFile("arq2Gmail.dat","rw");
             
             long fim = arq1.length();
             long atual;
             long QReg = 102;  
-            System.out.println(QReg);
-            System.out.println(fim);
+          
             
             
-            arq1.seek(fim-QReg);
-            System.out.println(arq1.getFilePointer());
             
-            
-            while(arq1.getFilePointer()>0){
-                atual = arq1.getFilePointer();
+            while(arq1.getFilePointer()<arq1.length()){
                 Registro reg = new Registro();
                 reg.leRegistro(arq1);
-                System.out.println(reg.getChave());
+                if(reg.terminaCom(reg.getEmail(),"gmail.com")){
                 Registros.add(reg);
-                arq1.seek(atual-QReg);
-            }
-            if(arq1.getFilePointer()==0){
-                Registro reg = new Registro();
-                reg.leRegistro(arq1);
-                System.out.println(reg.getChave());
-                Registros.add(reg);
+                }
             }
             
             
@@ -67,3 +56,6 @@ public class main {
     }
     
 }
+
+    
+

@@ -7,7 +7,9 @@ package provaeoa.trabalho;
 
 import java.io.DataInput;
 import java.io.DataOutput;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.charset.Charset;
 
 /**
@@ -56,6 +58,16 @@ public class Registro {
         
     }
     
+  
+    
+    public boolean terminaCom(String a, String b){
+        a = a.trim();
+        boolean result = false;
+        if(a.endsWith(b)){
+            result = true;
+        }
+        return result;
+    }
     
     
     public void escreveEndereco(DataOutput dout) throws IOException
