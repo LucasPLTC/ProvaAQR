@@ -27,11 +27,38 @@ public class main {
         long inicio = 0;
         long meio = fim/2;
         
-        while(arq2.getFilePointer()<arq2.length()){
+        while(arq1.getFilePointer()<arq1.length()){
             Registro reg = new Registro();
             reg.leRegistro(arq1);
             
+            while(arq2.getFilePointer() >= 0 && arq2.getFilePointer() < arq2.length()){
+                Registro reg2 = new Registro();
+                arq2.seek(meio*102);
+                reg2.leRegistro(arq2);
+                int ch1 = Integer.parseInt(reg.getChave().trim());
+                int ch2 = Integer.parseInt(reg2.getChave().trim());
+                if(ch1<ch2){
+                    fim = meio-1;
+                    meio= (inicio+fim)/2;
+                }else if(ch1>ch2){
+                    inicio = meio+1;
+                    meio = (inicio+fim)/2;
+                }else if(ch1 == ch2){
+                    reg.escreveEndereco(arq3);
+                    break;
+                }
+                if(inicio >=fim){
+                    break;
+                }
+            }
+            fim = treg2;
+            inicio = 0;
+            meio = (fim+inicio)/2;
+            arq2.seek(inicio);
         }
+        arq1.close();
+        arq2.close();
+        arq3.close();
         
         
         

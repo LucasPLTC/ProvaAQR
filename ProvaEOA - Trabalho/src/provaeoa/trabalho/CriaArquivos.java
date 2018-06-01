@@ -100,8 +100,8 @@ public class CriaArquivos {
             Registro r1 = new Registro(chave,nome,email,telefone);
             r1.escreveEndereco(arq1);
             GravaArq(arq1,chave,nome,email,telefone,"1 ","15");
-            GravaArq(arq1,chave,nome,email,telefone,"1","4");
-            GravaArq(arq1,chave,nome,email,telefone,"1 ","16");
+            GravaArq(arq1,chave,nome,email,telefone,"1","3");
+            GravaArq(arq1,chave,nome,email,telefone,"1","6");
             GravaArq(arq1,chave,nome,email,telefone,"1","8");
             GravaArq(arq1,chave,nome,email,telefone,"1 ","13");
             GravaArq(arq1,chave,nome,email,telefone,"1","9");
@@ -127,7 +127,7 @@ public class CriaArquivos {
            
             RandomAccessFile arq2 = new RandomAccessFile("arq2Q3.dat","rw");
             Registro r2 = new Registro(chave,nome,email,telefone);
-            
+            r2.escreveEndereco(arq2);
             GravaArq(arq2,chave,nome,email,telefone,"1","2");
             GravaArq(arq2,chave,nome,email,telefone,"1","3");
             GravaArq(arq2,chave,nome,email,telefone,"1","5");
